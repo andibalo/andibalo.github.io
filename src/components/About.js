@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, Box, Grid, IconButton, Typography, Divider } from '@material-ui/core'
+import { Container, Box, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import WebIcon from '@material-ui/icons/Web';
 import StorageIcon from '@material-ui/icons/Storage';

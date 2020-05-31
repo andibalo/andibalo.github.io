@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container, Box, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ExperienceVertical from './ExperienceVertical'
@@ -132,7 +132,7 @@ const Experience = () => {
     const classes = useStyles()
 
 
-    const [fade, toggleFade] = useState(false)
+
 
 
 
@@ -212,7 +212,7 @@ const Experience = () => {
                     </Grid>
                     <Grid item xs={4}>
                         <Box display="flex" justifyContent="center">
-                            <div className={`${classes.expNode} ${classes.expNodeActive}`} onClick={e => toggleFade(!fade)}>
+                            <div className={`${classes.expNode} ${classes.expNodeActive}`} >
                                 <div />
                                 <div />
                             </div>

@@ -37,11 +37,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         justifyContent: "center"
     },
-    heroIcons: {
-        display: "flex",
-        marginTop: "auto",
-        marginBottom: theme.spacing(5)
-    },
+
     headerName: {
         fontFamily: 'Raleway',
         color: "#fff",
@@ -90,6 +86,9 @@ const useStyles = makeStyles(theme => ({
         }
     },
     heroIcons: {
+        display: "flex",
+        marginTop: "auto",
+        marginBottom: theme.spacing(5),
         position: 'absolute',
         bottom: '0',
         left: '50%',

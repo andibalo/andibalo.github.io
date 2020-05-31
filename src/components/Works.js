@@ -106,7 +106,7 @@ const useStyles = makeStyles(theme => ({
     },
     imgIcon: {
         position: "absolute",
-
+        pointerEvents: 'none',
         right: "16px",
         zIndex: "999",
         background: "#dcdcdc",
@@ -122,7 +122,6 @@ const useStyles = makeStyles(theme => ({
         zIndex: "999",
         fontSize: '2rem',
         color: 'white',
-
         bottom: "16px",
         transition: 'all 0.2s',
         '&:hover': {
@@ -186,11 +185,10 @@ const Works = () => {
 
 
     const [workData, setWorkData] = useState({
-        works: [],
         selectedWork: null
     })
 
-    const { works, selectedWork } = workData
+    const { selectedWork } = workData
 
     const [open, setOpen] = useState(false);
 
@@ -243,7 +241,7 @@ const Works = () => {
                                     <div style={{ position: 'relative', cursor: 'pointer' }} >
                                         {index === 0 && (<AspectRatioIcon className={classes.expandIcon} />)}
 
-                                        {index === 0 && data.allPrismicPortfolio.edges[selectedWork].node.data.images.length > 1 && (
+                                        {index === 0 && (
                                             <Paper className={classes.imgIcon} >
                                                 <PhotoLibraryIcon style={{ marginRight: '8px' }} />
                                                 <span style={{ fontFamily: "Raleway", fontWeight: "600" }}>{data.allPrismicPortfolio.edges[selectedWork].node.data.images.length}</span>
