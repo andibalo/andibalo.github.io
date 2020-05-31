@@ -112,7 +112,7 @@ const useStyles = makeStyles(theme => ({
 const Hero = ({ logo }) => {
     const data = useStaticQuery(graphql`
     query {
-        logoMobile: file(relativePath: { eq: "logonew.png" }) {
+        logoMobile: file(relativePath: { eq: "logonew1.png" }) {
         childImageSharp {
             fixed(width: 250) {
             ...GatsbyImageSharpFixed

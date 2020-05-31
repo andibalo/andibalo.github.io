@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import GatsbyImg from 'gatsby-image'
 
-import { Container, Box, Grid, Typography, Button, ButtonGroup } from '@material-ui/core'
+import { Container, Box, Grid, Typography, Button, ButtonGroup, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -109,7 +109,7 @@ const useStyles = makeStyles(theme => ({
 
         right: "16px",
         zIndex: "999",
-        background: "#c1c1c1",
+        background: "#dcdcdc",
         bottom: "16px",
         display: "flex",
         alignItems: "center",
@@ -120,7 +120,9 @@ const useStyles = makeStyles(theme => ({
         position: "absolute",
         left: "16px",
         zIndex: "999",
+        fontSize: '2rem',
         color: 'white',
+
         bottom: "16px",
         transition: 'all 0.2s',
         '&:hover': {
@@ -242,10 +244,10 @@ const Works = () => {
                                         {index === 0 && (<AspectRatioIcon className={classes.expandIcon} />)}
 
                                         {index === 0 && data.allPrismicPortfolio.edges[selectedWork].node.data.images.length > 1 && (
-                                            <div className={classes.imgIcon} >
+                                            <Paper className={classes.imgIcon} >
                                                 <PhotoLibraryIcon style={{ marginRight: '8px' }} />
                                                 <span style={{ fontFamily: "Raleway", fontWeight: "600" }}>{data.allPrismicPortfolio.edges[selectedWork].node.data.images.length}</span>
-                                            </div>
+                                            </Paper>
                                         )}
 
                                         <GatsbyImg key={index} fluid={image.image1.fluid} alt={image.image1.alt ? image.image1.alt : ''} className={index === 0 ? classes.modalImg : ' '} style={index > 0 ? { visibility: "hidden", position: "absolute" } : {}} />

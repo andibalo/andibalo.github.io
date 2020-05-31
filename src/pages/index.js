@@ -1,5 +1,4 @@
 import React from "react"
-
 import { graphql } from 'gatsby'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -12,6 +11,8 @@ import Works from '../components/Works'
 import Contact from '../components/Contact'
 import Experience from '../components/Experience'
 import SimpleReactLightbox from "simple-react-lightbox";
+
+
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -25,6 +26,7 @@ const theme = createMuiTheme({
   }
 });
 
+
 const IndexPage = ({ data }) => (
   <ThemeProvider theme={theme}>
     <SimpleReactLightbox>
@@ -35,6 +37,7 @@ const IndexPage = ({ data }) => (
         <Works />
         <Experience />
         <Contact />
+
       </Layout>
     </SimpleReactLightbox>
   </ThemeProvider>
@@ -42,7 +45,7 @@ const IndexPage = ({ data }) => (
 
 export const query = graphql`
   query {
-    logo: file(relativePath: { eq: "logonew.png" }) {
+    logo: file(relativePath: { eq: "logonew1.png" }) {
       childImageSharp {
         fixed(width: 300) {
           ...GatsbyImageSharpFixed
