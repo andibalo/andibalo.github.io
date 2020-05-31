@@ -6,6 +6,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+#SRLLightbox {
+  z-index:9999;
+}
+
 *,
 *::after,
 *::before {

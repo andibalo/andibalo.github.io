@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   pathPrefix: "/andibalo.github.io",
   siteMetadata: {
@@ -6,6 +10,17 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `andibalo`,
+        accessToken: `${process.env.API_KEY}`,
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        schemas: {
+          portfolio: require('./src/schemas/portfolio.json')
+        }
+      },
+    },
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {

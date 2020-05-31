@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         },
         '& .logoMobile': {
             display: 'none !important',
-            width: "350px !important",
+            width: "300px !important",
             [theme.breakpoints.down(560)]: {
                 display: 'block !important'
             }

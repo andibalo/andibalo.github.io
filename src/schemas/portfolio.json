@@ -1,0 +1,66 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Portfolio id"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Title",
+        "placeholder": "Portfolio Title"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Subtitle",
+        "placeholder": "Subtitle"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Description",
+        "placeholder": "Portfolio Description"
+      }
+    },
+    "demo_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Demo Link",
+        "placeholder": "Demo Link"
+      }
+    },
+    "source_code": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Source Code",
+        "placeholder": "Source Code"
+      }
+    },
+    "images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image1": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "image1"
+            }
+          }
+        },
+        "label": "images"
+      }
+    }
+  }
+}

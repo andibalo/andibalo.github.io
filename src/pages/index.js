@@ -11,7 +11,7 @@ import About from '../components/About'
 import Works from '../components/Works'
 import Contact from '../components/Contact'
 import Experience from '../components/Experience'
-
+import SimpleReactLightbox from "simple-react-lightbox";
 const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -27,14 +27,16 @@ const theme = createMuiTheme({
 
 const IndexPage = ({ data }) => (
   <ThemeProvider theme={theme}>
-    <Layout>
-      <SEO title="Home" />
-      <Hero logo={data.logo.childImageSharp.fixed} />
-      <About />
-      <Works />
-      <Experience />
-      <Contact />
-    </Layout>
+    <SimpleReactLightbox>
+      <Layout>
+        <SEO title="Home" />
+        <Hero logo={data.logo.childImageSharp.fixed} />
+        <About />
+        <Works />
+        <Experience />
+        <Contact />
+      </Layout>
+    </SimpleReactLightbox>
   </ThemeProvider>
 )
 

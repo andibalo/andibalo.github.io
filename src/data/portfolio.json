@@ -1,6 +1,6 @@
 [
   {
-    "image": "codemy1.jpg",
+    "images": ["codemy1.jpg", "zealousy1.jpg"],
     "title": "Codemy",
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "demo": "https://andibalo.github.io/codemy/",
@@ -9,48 +9,11 @@
     "cols": "1"
   },
   {
-    "image": "zealousy1.jpg",
-    "title": "Zealousy",
+    "images": ["book1.jpg", "personal1.jpg"],
+    "title": "Test",
     "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "demo": "https://warm-cove-14028.herokuapp.com/",
-    "sourcecode": "https://github.com/andibalo/Zealousy",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "cols": "1"
-  },
-
-  {
-    "image": "web21.jpg",
-    "title": "Printz",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "demo": null,
-    "sourcecode": null,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "cols": "1"
-  },
-  {
-    "image": "corpdev1.jpg",
-    "title": "DevCorps",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "demo": "https://pumpkin-cupcake-14465.herokuapp.com/",
-    "sourcecode": "https://github.com/andibalo/devCorps",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "cols": "1"
-  },
-  {
-    "image": "book1.jpg",
-    "title": "BookIt",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "demo": "https://andibalo.github.io/BookIt/",
-    "sourcecode": "https://github.com/andibalo/BookIt",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "cols": "1"
-  },
-  {
-    "image": "personal1.jpg",
-    "title": "Personal Web",
-    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "demo": "https://andibalo.github.io",
-    "sourcecode": "https://github.com/andibalo/andibalo.github.io",
+    "demo": "https://andibalo.github.io/codemy/",
+    "sourcecode": "https://github.com/andibalo/codemy",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "cols": "1"
   }

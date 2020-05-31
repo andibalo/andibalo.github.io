@@ -76,10 +76,10 @@ const ExperienceVertical = () => {
             </div>
         )
     }
+
     return (
         <VerticalTimeline layout={"1-column"} className={classes.timelineWrapper}>
             <VerticalTimelineElement
-
                 className={`${classes.verticalTimelineElement} vertical-timeline-element--work`}
                 contentStyle={{ background: '#0F87E6', color: '#fff', marginLeft: '70px' }}
                 contentArrowStyle={{ borderRight: '7px solid  #0F87E6' }}
@@ -93,9 +93,7 @@ const ExperienceVertical = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
             </VerticalTimelineElement>
-
             <VerticalTimelineElement
-
                 className={`${classes.verticalTimelineElement} vertical-timeline-element--work`}
                 contentStyle={{ background: '#80807A', color: '#fff', marginLeft: '70px' }}
                 contentArrowStyle={{ borderRight: '7px solid  #80807A' }}
@@ -110,7 +108,6 @@ const ExperienceVertical = () => {
                 </p>
             </VerticalTimelineElement>
             <VerticalTimelineElement
-
                 className={`${classes.verticalTimelineElement} vertical-timeline-element--work`}
                 contentStyle={{ background: '#80807A', color: '#fff', marginLeft: '70px' }}
                 contentArrowStyle={{ borderRight: '7px solid  #80807A' }}
@@ -124,8 +121,6 @@ const ExperienceVertical = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
             </VerticalTimelineElement>
-
-
         </VerticalTimeline>
     )
 }

@@ -12,6 +12,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { SRLWrapper } from "simple-react-lightbox";
+import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
 const useStyles = makeStyles(theme => ({
     sectionWrapper: {
@@ -81,16 +84,18 @@ const useStyles = makeStyles(theme => ({
 
         },
     },
+
     modalImg: {
-        minHeight: "250px",
-        width: "100%",
-        objectFit: "cover",
-        marginBottom: theme.spacing(2),
+        width: "600px",
+        maxWidth: "100%",
+
+
         [theme.breakpoints.down(768)]: {
             minHeight: '100px'
         }
     },
     buttonGroup: {
+        marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
         '& button': {
             backgroundColor: '#0F87E6',
@@ -99,36 +104,84 @@ const useStyles = makeStyles(theme => ({
             }
         }
     },
+    imgIcon: {
+        position: "absolute",
+
+        right: "16px",
+        zIndex: "999",
+        background: "#c1c1c1",
+        bottom: "16px",
+        display: "flex",
+        alignItems: "center",
+        borderRadius: '5px',
+        padding: theme.spacing(0.5),
+    },
+    expandIcon: {
+        position: "absolute",
+        left: "16px",
+        zIndex: "999",
+        color: 'white',
+        bottom: "16px",
+        transition: 'all 0.2s',
+        '&:hover': {
+            transform: 'scale(1.2)',
+            color: '#0F87E6'
+        },
+        '&:focus': {
+            transform: 'scale(1.2)',
+            color: '#0F87E6'
+        }
+    },
     modalCloseBtn: {
         color: '#0F87E6'
     }
 }))
 
 const Works = () => {
+
     const data = useStaticQuery(graphql`
     query {
-        allPortfolioCard {
-          nodes {
-            image {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+        allPrismicPortfolio {
+          edges {
+            node {
+              id
+              type
+              data {
+                images {
+                  image1 {
+                    fluid(maxWidth: 1000, maxHeight: 800) {
+                        ...GatsbyPrismicImageFluid
+                      }
+                    alt
+                  }
+               
+                }
+                description {
+                  text
+                }
+                title {
+                  text
+                }
+                subtitle {
+                  text
+                }
+                demo_link {
+                    target
+                    url
+                }
+                source_code {
+                    target
+                    url
                 }
               }
             }
-            title
-            subtitle
-            description
-            demo
-            sourcecode
-            cols
           }
         }
       }
+      
   `)
+    console.log(data)
 
-
-    //console.log(data.allPortfolioCard.nodes)
 
     const [workData, setWorkData] = useState({
         works: [],
@@ -141,13 +194,12 @@ const Works = () => {
 
     const classes = useStyles()
 
-    const handleWorkBtn = (viewDemo, demoLink, sourceCodeLink) => {
+    const handleWorkBtn = (viewDemo, targetLink) => {
 
         if (viewDemo) {
-
-            window.open(demoLink, '_blank')
+            window.open(targetLink, '_blank')
         } else {
-            window.open(sourceCodeLink, '_blank')
+            window.open(targetLink, '_blank')
         }
     }
 
@@ -168,9 +220,9 @@ const Works = () => {
 
     const renderModal = () => {
 
-        //console.log(works[selectedWork])
+        console.log(data.allPrismicPortfolio.edges[selectedWork])
 
-        const { title, description, image, demo, sourcecode } = data.allPortfolioCard.nodes[selectedWork]
+        const { title, description, demo_link, source_code } = data.allPrismicPortfolio.edges[selectedWork].node.data
 
         return (
             <div>
@@ -180,17 +232,41 @@ const Works = () => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title" style={{ textAlign: "center" }}>{title || "Title"}</DialogTitle>
+                    <DialogTitle id="alert-dialog-title" style={{ textAlign: "center" }}>{title.text || "Title"}</DialogTitle>
                     <DialogContent>
-                        <GatsbyImg fluid={image.childImageSharp.fluid} alt={title} className={classes.modalImg} />
+                        <SRLWrapper >
+                            {data.allPrismicPortfolio.edges[selectedWork].node.data.images.map((image, index) => {
+
+                                return (
+                                    <div style={{ position: 'relative', cursor: 'pointer' }} >
+                                        {index === 0 && (<AspectRatioIcon className={classes.expandIcon} />)}
+
+                                        {index === 0 && data.allPrismicPortfolio.edges[selectedWork].node.data.images.length > 1 && (
+                                            <div className={classes.imgIcon} >
+                                                <PhotoLibraryIcon style={{ marginRight: '8px' }} />
+                                                <span style={{ fontFamily: "Raleway", fontWeight: "600" }}>{data.allPrismicPortfolio.edges[selectedWork].node.data.images.length}</span>
+                                            </div>
+                                        )}
+
+                                        <GatsbyImg key={index} fluid={image.image1.fluid} alt={image.image1.alt ? image.image1.alt : ''} className={index === 0 ? classes.modalImg : ' '} style={index > 0 ? { visibility: "hidden", position: "absolute" } : {}} />
+                                    </div>
+
+
+
+                                )
+                            })}
+
+
+                        </SRLWrapper>
+
                         <Box display="flex" justifyContent="center">
                             <ButtonGroup variant="contained" color="primary" className={classes.buttonGroup}>
-                                <Button disabled={demo ? false : true} onClick={e => handleWorkBtn(true, demo, sourcecode)}>Demo</Button>
-                                <Button disabled={demo ? false : true} onClick={e => handleWorkBtn(false, demo, sourcecode)}>Source Code</Button>
+                                <Button disabled={demo_link.url ? false : true} onClick={e => handleWorkBtn(true, demo_link.url)}>Demo</Button>
+                                <Button disabled={source_code.url ? false : true} onClick={e => handleWorkBtn(false, source_code.url)}>Source Code</Button>
                             </ButtonGroup>
                         </Box>
                         <DialogContentText id="alert-dialog-description">
-                            {description || "Title"}
+                            {description.text || "Title"}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -212,28 +288,30 @@ const Works = () => {
 
                 <Grid container justify="center">
                     <GridList className={classes.gridList} cols={3} spacing={5} style={{ width: "100%" }} >
-                        {data.allPortfolioCard.nodes.map((work, index) => {
+                        {data.allPrismicPortfolio.edges.map((work, index) => {
 
                             //console.log(work)
                             return (
 
-                                <GridListTile key={index} cols={work.cols || 1} className={classes.gridTile} onClick={e => handleClickOpen(e)} >
+                                <GridListTile key={index} cols={work.node.cols || 1} className={classes.gridTile} onClick={e => handleClickOpen(e)} >
                                     <Box data-work={index} display="flex" justifyContent="center" alignItems="center" className={classes.gridOverlay} >
                                         <div style={{ pointerEvents: "none" }}>
-                                            {work.title && (
+                                            {work.node.data.title.text && (
                                                 <Typography variant="h5" component="h5" align="center" className="projectHeader">
-                                                    {work.title}
+                                                    {work.node.data.title.text}
                                                 </Typography>
                                             )}
 
-                                            {work.subtitle &&
+                                            {work.node.data.description.text &&
                                                 (<Typography variant="body1" component="p" align="center" className="projectSubheader" >
-                                                    {work.subtitle}
+                                                    {work.node.data.subtitle.text}
                                                 </Typography>)
                                             }
                                         </div>
                                     </Box>
-                                    <GatsbyImg fluid={work.image.childImageSharp.fluid} alt={work.title} />
+                                    <GatsbyImg key={index} fluid={work.node.data.images[0].image1.fluid} alt="test" />
+
+
                                 </GridListTile>
                             )
                         })}
