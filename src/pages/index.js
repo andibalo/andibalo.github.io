@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => (
   <ThemeProvider theme={theme}>
     <SimpleReactLightbox>
       <Layout>
-        <SEO title="Home" />
+        <SEO title="Andi Usman Balo | Full Stack Developer" url="https://andibalo.github.io/" />
         <Hero logo={data.logo.childImageSharp.fixed} />
         <About />
         <Works />

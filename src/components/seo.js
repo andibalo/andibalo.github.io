@@ -9,8 +9,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-
-function SEO({ description, lang, meta, title }) {
+import homeImg from '../images/personal.jpg'
+function SEO({ description, lang, meta, title, url }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -46,6 +46,14 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: `og:image`,
+          content: homeImg,
+        },
+        {
+          property: `og:url`,
+          content: url,
         },
         {
           property: `og:type`,
